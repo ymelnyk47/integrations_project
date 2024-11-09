@@ -1,4 +1,3 @@
-
 import { ActivityItem } from "../components/threads-feed";
 
 export interface Integration {

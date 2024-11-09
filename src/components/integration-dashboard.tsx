@@ -1,4 +1,3 @@
-// src/components/integration-dashboard.tsx
 "use client";
 
 import React, { useState, useMemo } from 'react';

@@ -1,4 +1,3 @@
-// src/components/integration-list.tsx
 "use client";
 
 import React from 'react';
