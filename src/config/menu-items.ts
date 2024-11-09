@@ -1,4 +1,4 @@
-// src/config/menu-items.ts
+
 import { 
     LayoutDashboard,
     FileText,

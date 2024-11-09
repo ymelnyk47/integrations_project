@@ -5,11 +5,11 @@ import React, { useState, useMemo } from 'react';
 import { 
   Menu 
 } from 'lucide-react';
-import IntegrationList from './integration-list';
-import ActivityFeed from './threads-feed';
-import DeveloperChats from './developer-chats';
-import { menuItems } from '@/config/menu-items';
-import { sampleIntegrations, sampleActivities } from '@/config/sample-data';
+import IntegrationList from '../components/integration-list';
+import ActivityFeed from '../components/threads-feed';
+import DeveloperChats from '../components/developer-chats';
+import { menuItems } from '../config/menu-items';
+import { sampleIntegrations, sampleActivities } from '../config/sample-data';
 
 // Add sample chats data
 const sampleChats = [
@@ -67,7 +67,7 @@ export default function IntegrationDashboard() {
         sidebarCollapsed ? 'w-16' : 'w-64'
       }`}>
         <div className="p-4 border-b border-gray-800 flex items-center justify-between">
-          {!sidebarCollapsed && <span className="font-bold text-lg text-white">Integration Hub</span>}
+          {!sidebarCollapsed && <span className="font-bold text-lg text-white">integration_project</span>}
           <button 
             onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
             className="p-1 rounded hover:bg-gray-800 text-gray-300"
@@ -124,8 +124,8 @@ export default function IntegrationDashboard() {
 
           {/* Right Sidebar */}
           <div className="lg:col-span-1 space-y-6">
+            <DeveloperChats chats={sampleChats} />
             <ActivityFeed activities={sampleActivities} />
-            <DeveloperChats chats ={sampleChats} />
           </div>
         </div>
       </div>

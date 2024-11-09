@@ -1,4 +1,3 @@
-// src/components/activity-feed.tsx
 "use client";
 
 import React from 'react';

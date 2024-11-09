@@ -1,10 +1,9 @@
-// src/components/developer-chats.tsx
 "use client";
 
 import React from 'react';
-import { MessageSquare, User, Clock } from 'lucide-react';
+import { MessageSquare, User, Clock, ChartSplineIcon } from 'lucide-react';
 
-interface DeveloperChat {
+interface content {
   id: number;
   developer: string;
   avatar: string;
@@ -15,11 +14,23 @@ interface DeveloperChat {
   integration: string;
 }
 
-interface DeveloperChatsProps {
-  chats: DeveloperChat[];
+interface DeveloperChat {
+  readonly id: number;
+  readonly developer: string;
+  readonly avatar: string;
+  readonly lastMessage: string;
+  readonly timestamp: string;
+  readonly unread: number;
+  readonly status: 'online' | 'offline' | 'away';
+  readonly integration: string;
 }
 
-export default function DeveloperChats({chats }: DeveloperChatsProps) {
+interface DeveloperChatProps {
+  chats: readonly DeveloperChat[];
+}
+
+
+export default function DeveloperChatComponent({ chats }: DeveloperChatProps) {
   return (
     <div className='bg-gray-950 rounded-lg border border-gray-800'>
       <div className='p-4 border-b border-gray-800'>
@@ -29,7 +40,7 @@ export default function DeveloperChats({chats }: DeveloperChatsProps) {
         </h2>
       </div>
       <div className='p-2'>
-        {chats.map((chat) => (
+        { chats.map ((chat) => (
           <div 
             key={chat.id}
             className='flex items-center p-3 hover:bg-gray-900 rounded-lg cursor-pointer transition-colors'
