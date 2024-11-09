@@ -3,11 +3,10 @@
 
 import React, { useState, useMemo } from 'react';
 import { 
-  SlidersHorizontal,
   Menu 
 } from 'lucide-react';
 import IntegrationList from './integration-list';
-import ActivityFeed from './activity-feed';
+import ActivityFeed from './threads-feed';
 import DeveloperChats from './developer-chats';
 import { menuItems } from '@/config/menu-items';
 import { sampleIntegrations, sampleActivities } from '@/config/sample-data';
@@ -126,7 +125,7 @@ export default function IntegrationDashboard() {
           {/* Right Sidebar */}
           <div className="lg:col-span-1 space-y-6">
             <ActivityFeed activities={sampleActivities} />
-            <DeveloperChats chats={sampleChats} />
+            <DeveloperChats chats ={sampleChats} />
           </div>
         </div>
       </div>

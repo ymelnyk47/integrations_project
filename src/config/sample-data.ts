@@ -1,5 +1,5 @@
 // src/config/sample-data.ts
-import { ActivityItem } from "@/components/activity-feed";
+import { ActivityItem } from "@/components/threads-feed";
 
 export interface Integration {
   id: number;

@@ -19,7 +19,7 @@ interface DeveloperChatsProps {
   chats: DeveloperChat[];
 }
 
-export default function DeveloperChats({ chats }: DeveloperChatsProps) {
+export default function DeveloperChats({chats }: DeveloperChatsProps) {
   return (
     <div className='bg-gray-950 rounded-lg border border-gray-800'>
       <div className='p-4 border-b border-gray-800'>
