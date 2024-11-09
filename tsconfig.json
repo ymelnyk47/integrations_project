@@ -1,19 +1,23 @@
-{
-  {
-  "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "paths": {"@/*": ["./src/*"]}
-    "resolveJsonModule",: true,
-    "isolatedModules": true,
-    "jsx": "preserve",:
-    "module": "esnext",:
-    "esModuleInterop",: true,
-    "allowSyntheticDefaultImports",: true,
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: 'class',
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}"
+  ],
+  theme: {
+    extend: {
+      colors: {
+        sidebar: '#1F1D2E',
+        background: '#13111C',
+        accent: '#C657D7',
+        'accent-blue': '#2E77D0',
+        muted: '#9B9BA4'
+      },
+      borderRadius: {
+        card: '0.5rem'
+      }
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
-  }
+  plugins: []
 }

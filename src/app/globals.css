@@ -1,21 +1,32 @@
+/* globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-[#13111C] text-gray-100;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+  
+  .status-dot-review {
+    @apply bg-green-500;
+  }
+  
+  .status-dot-progress {
+    @apply bg-yellow-500;
+  }
+  
+  .card {
+    @apply bg-[#1F1D2E] rounded-lg border border-white/[0.1] p-4;
+  }
+
+  .sidebar-item {
+    @apply flex items-center space-x-2 px-4 py-2 hover:bg-white/[0.05] rounded-md;
+  }
 }
