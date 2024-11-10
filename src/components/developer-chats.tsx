@@ -1,18 +1,8 @@
 "use client";
 
 import React from 'react';
-import { MessageSquare, User, Clock, ChartSplineIcon } from 'lucide-react';
+import { MessageSquare, User, Clock } from 'lucide-react';
 
-interface content {
-  id: number;
-  developer: string;
-  avatar: string;
-  lastMessage: string;
-  timestamp: string;
-  unread: number;
-  status: 'online' | 'offline' | 'away';
-  integration: string;
-}
 
 interface DeveloperChat {
   readonly id: number;
