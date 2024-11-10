@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { 
-  Search, Book, ArrowUpRight, Users, Code, Database, 
-  MessageSquare, Clock, Eye, Edit, Star, Activity 
+  Search, Book, ArrowUpRight, Code, Clock, Eye, Edit, Activity 
 } from 'lucide-react';
 
-// Mock data - in production this would come from an API
+// Mock data - in production this will come from an API
 const mockDocuments = [
   {
     id: '1',
