@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Menu } from 'lucide-react';
 import { menuItems } from '../config/menu-items';
-import ViewContainer from '../components/view-container';
+import UserMenu from '../components/user-menu';
 import {
   DashboardView,
   SecurityView,
@@ -15,7 +15,7 @@ import {
   AuditView,
   SettingsView,
   SupportView
-} from '.';
+} from './index';
 
 export default function IntegrationDashboard() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -57,11 +57,15 @@ export default function IntegrationDashboard() {
   return (
     <div className="min-h-screen bg-gray-900 flex">
       {/* Sidebar */}
-      <div className={`bg-gray-950 border-r border-gray-800 transition-all duration-300 ${
-        sidebarCollapsed ? 'w-16' : 'w-64'
-      }`}>
+      <div 
+        className={`bg-gray-950 border-r border-gray-800 transition-all duration-300 ${
+          sidebarCollapsed ? 'w-16' : 'w-64'
+        }`}
+      >
         <div className="p-4 border-b border-gray-800 flex items-center justify-between">
-          {!sidebarCollapsed && <span className="font-bold text-lg text-white">integration_project</span>}
+          {!sidebarCollapsed && (
+            <span className="font-bold text-lg text-white">integration_project</span>
+          )}
           <button 
             onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
             className="p-1 rounded hover:bg-gray-800 text-gray-300"
@@ -77,7 +81,7 @@ export default function IntegrationDashboard() {
                 key={item.id}
                 onClick={() => handleTabChange(item.id)}
                 className={`w-full flex items-center space-x-2 px-3 py-2 rounded-lg mb-1 text-gray-300
-                  ${activeTab === item.id ? 'bg-green-900 text-green-100' : 'hover:bg-gray-800'}
+                  ${activeTab === item.id ? 'bg-green-900/50 text-green-100' : 'hover:bg-gray-800'}
                   ${sidebarCollapsed ? 'justify-center' : 'justify-start'}`}
               >
                 <IconComponent className="h-5 w-5" />
@@ -91,22 +95,26 @@ export default function IntegrationDashboard() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1">
-        <div className="p-6">
-          <div className="flex justify-between items-center mb-6">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-100">
-                {menuItems.find(item => item.id === activeTab)?.label}
-              </h1>
-              <p className="text-gray-400">Manage your system integrations and developer communications</p>
-            </div>
-          </div>
-
-          <ViewContainer currentView={activeTab} previousView={previousTab}>
-            {renderView()}
-          </ViewContainer>
-        </div>
+      <div className="flex-1 overflow-hidden">
+  <div className="p-6">
+    <div className="flex justify-between items-center mb-6">
+      <div>
+        <h1 className="text-2xl font-bold text-gray-100">
+          {menuItems.find(item => item.id === activeTab)?.label}
+        </h1>
+        <p className="text-gray-400">Manage your system integrations and developer communications</p>
       </div>
-    </div>
+      <UserMenu user={{
+        name: "Sarah Chen",
+        email: "sarah@company.com",
+        role: "Admin",
+        // avatarUrl: "https://..." optional avatar URL for later can add
+      }} />
+      </div>
+
+        {renderView()}
+      </div>
+  </div>
+</div>
   );
 }

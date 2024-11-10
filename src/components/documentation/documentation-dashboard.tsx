@@ -8,8 +8,8 @@ import {
 const mockDocuments = [
   {
     id: '1',
-    title: 'Getting Started Guide',
-    description: 'Quick start guide for new developers',
+    title: 'Getting UAT Environment Access to Finicity',
+    description: 'Team documentation on setup and provisioning',
     category: 'guides',
     lastUpdated: '2h ago',
     views: 1234,
@@ -17,8 +17,8 @@ const mockDocuments = [
   },
   {
     id: '2',
-    title: 'API Authentication',
-    description: 'Learn how to authenticate your API requests',
+    title: 'Main CardHub Documentation',
+    description: 'Main Reference Docs',
     category: 'api',
     lastUpdated: '4h ago',
     views: 892,
@@ -26,8 +26,8 @@ const mockDocuments = [
   },
   {
     id: '3',
-    title: 'Webhook Setup',
-    description: 'Configure and manage webhooks',
+    title: 'Stripe Webhook Setup',
+    description: 'Configure and manage webhooks with Stripe',
     category: 'integration',
     lastUpdated: '1d ago',
     views: 567,
@@ -35,8 +35,8 @@ const mockDocuments = [
   },
   {
     id: '4',
-    title: 'Error Handling',
-    description: 'Best practices for handling API errors',
+    title: 'Mulesoft common error handling guide',
+    description: 'API Errors with Mulesoft handling process',
     category: 'guides',
     lastUpdated: '2d ago',
     views: 789,
@@ -48,21 +48,21 @@ const mockActivities = [
   {
     id: '1',
     type: 'edit',
-    docTitle: 'API Authentication',
+    docTitle: 'Getting UAT Environment Access to Finicity',
     user: 'Sarah Chen',
     timestamp: '10m ago'
   },
   {
     id: '2',
     type: 'create',
-    docTitle: 'Webhook Setup Guide',
+    docTitle: 'Sharing updates on the latest CardHub docs.',
     user: 'Mike Wilson',
     timestamp: '1h ago'
   },
   {
     id: '3',
     type: 'comment',
-    docTitle: 'Error Handling',
+    docTitle: 'Stripe Webhook Setup',
     user: 'John Doe',
     timestamp: '2h ago'
   }
@@ -77,10 +77,10 @@ export const DocumentationDashboardContent = () => {
       {/* Metrics Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: 'Total Docs', value: '234', icon: Book, change: '+12%' },
-          { label: 'Weekly Views', value: '15.2k', icon: Eye, change: '+8%' },
-          { label: 'Active Users', value: '1,234', icon: Users, change: '+15%' },
-          { label: 'Avg. Response', value: '2.4h', icon: Clock, change: '-10%' }
+          { label: 'Total Docs', value: '234', icon: Book, change: 'Week +12%' },
+          { label: 'Weekly Views', value: '15.2k', icon: Eye, change: 'Week +8%' },
+          { label: 'Upcoming', value: '7', icon: Code, change: 'Week +1' },
+          { label: 'Weekly Edits', value: '43', icon: Activity, change: 'Week +5%' }
         ].map((metric, i) => (
           <div key={i} className="bg-gray-900 p-6 rounded-lg border border-gray-800">
             <div className="flex justify-between items-start">
