@@ -1,4 +1,4 @@
-import IntegrationDashboard from '../components/integration-dashboard';
+import IntegrationDashboard from '../views/integration-dashboard';
 
 export default function Home() {
   return <IntegrationDashboard />;

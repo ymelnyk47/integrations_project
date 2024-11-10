@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Menu } from 'lucide-react';
 import { menuItems } from '../config/menu-items';
-import ViewContainer from './view-container';
+import ViewContainer from '../components/view-container';
 import {
   DashboardView,
   SecurityView,
@@ -15,7 +15,7 @@ import {
   AuditView,
   SettingsView,
   SupportView
-} from '../views';
+} from '.';
 
 export default function IntegrationDashboard() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);

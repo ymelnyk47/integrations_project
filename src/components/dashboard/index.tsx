@@ -1,6 +1,6 @@
 import React from 'react';
 import { SearchBar } from '../search-bar';
-import DashboardMetrics from '../dashboard-metrics';
+import DashboardMetrics from './dashboard-metrics';
 import { motion } from 'framer-motion';
 
 const Dashboard: React.FC = () => {
