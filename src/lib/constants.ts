@@ -1,4 +1,4 @@
-import { LucideIcon, Terminal, Code, Database, Book, Cloud } from 'lucide-react';
+import { LucideIcon, Terminal, Code, Database, } from 'lucide-react';
 
 interface Integration {
   id: string;

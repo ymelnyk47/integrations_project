@@ -9,16 +9,12 @@ interface DiscussionSidebarProps {
   onSearchChange: (term: string) => void;
 }
 
-// Filter options with their respective icons and labels
-const filterOptions: Array<{
-  id: FilterType;
-  icon: typeof Hash;
-  label: string;
-}> = [
+// Filter options with their respective icons
+const filterOptions = [
   { id: 'all', icon: Hash, label: 'All Discussions' },
   { id: 'mentions', icon: AtSign, label: 'Mentions' },
   { id: 'saved', icon: Bookmark, label: 'Saved' }
-];
+] as const;
 
 const DiscussionSidebar = React.memo(({ 
   currentFilter, 
@@ -26,18 +22,21 @@ const DiscussionSidebar = React.memo(({
   searchTerm,
   onSearchChange
 }: DiscussionSidebarProps) => {
-  // Memoize the search handler to prevent unnecessary re-renders
+  // Memoized search handler for performance
   const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     onSearchChange(e.target.value);
   }, [onSearchChange]);
 
   return (
     <div className="w-64 bg-gray-950 border-r border-gray-800 flex flex-col">
+      {/* Header Section */}
       <div className="p-4 border-b border-gray-800">
         <div className="flex items-center space-x-2 mb-4">
           <MessageSquare className="w-5 h-5 text-gray-400" />
           <h2 className="text-lg font-semibold text-gray-100">Discussions</h2>
         </div>
+        
+        {/* Search Input */}
         <div className="relative">
           <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-500 pointer-events-none" />
           <input
@@ -52,6 +51,7 @@ const DiscussionSidebar = React.memo(({
         </div>
       </div>
       
+      {/* Filter Navigation */}
       <nav className="p-2 space-y-1 flex-1">
         {filterOptions.map(({ id, icon: Icon, label }) => (
           <button
@@ -69,7 +69,7 @@ const DiscussionSidebar = React.memo(({
         ))}
       </nav>
 
-      {/* Footer - Could add additional functionality here */}
+      {/* Status Footer */}
       <div className="p-4 border-t border-gray-800">
         <div className="flex items-center text-sm text-gray-400">
           <div className="w-2 h-2 rounded-full bg-green-500 mr-2"></div>
