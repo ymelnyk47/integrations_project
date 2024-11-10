@@ -46,7 +46,7 @@ const mockDiscussions: Discussion[] = [
 export default function DiscussionsView() {
   const [filter, setFilter] = useState<FilterType>('all');
   const [searchTerm, setSearchTerm] = useState('');
-  const [isPending, startTransition] = useTransition();
+  //const [isPending, startTransition] = useTransition();
   const [discussions, setDiscussions] = useState<Discussion[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -81,12 +81,7 @@ export default function DiscussionsView() {
         setIsLoading(false);
       }
     };
-
-    // Use transition to prevent UI freeze during filtering
-    startTransition(() => {
-      loadDiscussions();
-    });
-  }, [filter, searchTerm]);
+});
 
   const handleDiscussionClick = (id: string) => {
     console.log(`Opening discussion ${id}`);
