@@ -27,8 +27,14 @@ interface UserMenuProps {
 
 export default function UserMenu({ user }: UserMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const { theme, setTheme } = useTheme();
+
+  // Handle mounting state
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -42,7 +48,16 @@ export default function UserMenu({ user }: UserMenuProps) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const commandKey = navigator.platform.toLowerCase().includes('mac') ? '⌘' : 'Ctrl';
+  // Prevent hydration issues by not rendering until mounted
+  if (!isMounted) {
+    return null;
+  }
+
+  // Get command key safely
+  const getCommandKey = () => {
+    if (typeof window === 'undefined') return 'Ctrl';
+    return /(Mac|iPhone|iPod|iPad)/i.test(navigator?.platform ?? '') ? '⌘' : 'Ctrl';
+  };
 
   return (
     <div className="relative" ref={menuRef}>
@@ -123,11 +138,11 @@ export default function UserMenu({ user }: UserMenuProps) {
           {/* Menu Items */}
           <div className="px-2 py-1.5 space-y-0.5">
             {[
-              { label: 'Profile & Account', icon: User, shortcut: `${commandKey}+P` },
-              { label: 'Settings', icon: Settings, shortcut: `${commandKey}+,` },
+              { label: 'Profile & Account', icon: User, shortcut: `${getCommandKey()}+P` },
+              { label: 'Settings', icon: Settings, shortcut: `${getCommandKey()}+,` },
               { label: 'Security', icon: KeyRound, shortcut: null },
-              { label: 'Notifications', icon: Bell, shortcut: `${commandKey}+N` },
-              { label: 'Keyboard Shortcuts', icon: Command, shortcut: `${commandKey}+K` },
+              { label: 'Notifications', icon: Bell, shortcut: `${getCommandKey()}+N` },
+              { label: 'Keyboard Shortcuts', icon: Command, shortcut: `${getCommandKey()}+K` },
               { label: 'Help & Support', icon: HelpCircle, shortcut: null },
             ].map(({ label, icon: Icon, shortcut }) => (
               <button

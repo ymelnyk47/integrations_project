@@ -10,7 +10,7 @@ import {
   ArrowUpRight, 
   Settings, 
   CheckCircle, 
-  AlertCircle
+  AlertCircle 
 } from 'lucide-react';
 import { Integration } from '@/types/integration';
 

@@ -1,8 +1,8 @@
 "use client";
 
-import IntegrationDashboard from '../views/integration-dashboard';
+import Dashboard from '../components/dashboard/index';
 
 export default function Home() {
-  return <IntegrationDashboard />;
+  return <Dashboard />;
 }
 

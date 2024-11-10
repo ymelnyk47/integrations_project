@@ -1,40 +1,46 @@
-import React from 'react';
-import { SearchBar } from '../search-bar';
-import DashboardMetrics from './dashboard-metrics';
-import { motion } from 'framer-motion';
+"use client";
 
-const Dashboard: React.FC = () => {
-  const handleSearch = (term: string) => {
-    console.log('Searching:', term);
-    // Implement your search logic here
-  };
+import React from 'react';
+import DashboardMetrics from './dashboard-metrics';
+import IntegrationList from '../integration-list';
+//import { ThreadsFeed } from '../threads-feed';
+import { SearchBar } from '../search-bar';
+
+const Dashboard = () => {
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [partnerFilter, setPartnerFilter] = React.useState('all');
 
   return (
-    <div className="min-h-screen bg-gray-950">
-      <header className="sticky top-0 z-10 bg-gray-950/80 backdrop-blur-sm border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-xl font-semibold text-white">Dashboard</h1>
-            <SearchBar onSearch={handleSearch} />
-          </div>
+    <div className="space-y-6 p-6">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-100">Dashboard</h1>
+          <p className="text-gray-400">Manage your system integrations and developer communications</p>
         </div>
-      </header>
+        <SearchBar 
+          onSearch={(term) => setSearchTerm(term)}
+          className="w-96"
+        />
+      </div>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <DashboardMetrics />
-          
-          {/* Add your discussions/threads component here */}
-          <div className="bg-gray-900 rounded-lg border border-gray-800 p-6">
-            <h2 className="text-lg font-semibold text-white mb-4">Recent Discussions</h2>
-            {/* Add your discussions content here */}
-          </div>
-        </motion.div>
-      </main>
+      {/* Metrics */}
+      <DashboardMetrics />
+
+      {/* Main Content Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Left Column - Integrations */}
+        <div className="lg:col-span-2">
+          <IntegrationList
+            integrations={IntegrationList}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            partnerFilter={partnerFilter}
+            setPartnerFilter={setPartnerFilter}
+          />
+        </div>
     </div>
-  );
-}
+</div>
+)
+};
+
+export default Dashboard;
